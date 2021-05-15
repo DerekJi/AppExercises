@@ -1,5 +1,8 @@
-﻿namespace AppEx.Services.Models
+﻿using System;
+
+namespace AppEx.Services.Models
 {
+    [Serializable]
     public class WaterConnectCsvTranformItem
     {
         public string DHNO { get; set; }

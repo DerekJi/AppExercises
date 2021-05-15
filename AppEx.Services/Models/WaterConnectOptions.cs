@@ -10,6 +10,11 @@ namespace AppEx.Services.Models
         public string AppSettingKey { get; } = "WaterConnect";
 
         /// <summary>
+        /// Specify the target file name (without extension)
+        /// </summary>
+        public string OutputName { get; set; }
+
+        /// <summary>
         /// URL of the CSV file
         /// </summary>
         public string CsvUrl { get; set; }

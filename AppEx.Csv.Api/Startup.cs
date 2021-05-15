@@ -11,14 +11,21 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AppEx.Services;
+using AppEx.Core.Extensions;
+using AppEx.Services.CSV;
 
 namespace AppEx.Csv.Api
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IWebHostEnvironment env)
         {
-            Configuration = configuration;
+            var _environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development";
+            Console.WriteLine($"EnvironmentName: {_environmentName}");
+
+            var builder = new ConfigurationBuilder().AddSettings(env.ContentRootPath, _environmentName);
+            Configuration = builder.Build();
         }
 
         public IConfiguration Configuration { get; }
@@ -32,6 +39,9 @@ namespace AppEx.Csv.Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AppEx.Csv.Api", Version = "v1" });
             });
+
+            services.RegisterAllServices(Configuration)
+                .AddScoped<ICsvService, WaterConnectService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

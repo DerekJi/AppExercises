@@ -11,6 +11,8 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading.Tasks;
 
 namespace AppEx.Services.CSV
@@ -113,6 +115,26 @@ namespace AppEx.Services.CSV
             }
            
             return records;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="requireTransform"></param>
+        /// <returns></returns>
+        public async Task<Byte[]> FetchRecordsAsByteArrayAsync(bool requireTransform)
+        {
+            var results = await FetchRecordsAsync(requireTransform);
+
+            var filename = $"{Options.OutputName}-{DateTime.Now.ToUnixTime()}.csv";
+            var fullpath = SaveAs(results, filename, true);
+            if (!string.IsNullOrEmpty(fullpath) && File.Exists(fullpath))
+            {
+                var content = await File.ReadAllBytesAsync(fullpath);
+                return content;
+            }
+
+            return new List<Byte>().ToArray();
         }
 
         /// <summary>

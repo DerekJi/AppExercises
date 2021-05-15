@@ -1,4 +1,5 @@
 ﻿using AppEx.Services.Models;
+using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.IO;
@@ -19,6 +20,8 @@ namespace AppEx.Services.CSV
         List<ExpandoObject> ConvertToRecords(StreamReader reader);
 
         Task<List<ExpandoObject>> FetchRecordsAsync(bool requireTransform);
+
+        Task<Byte[]> FetchRecordsAsByteArrayAsync(bool requireTransform);
 
         string SaveAs(List<ExpandoObject> records, string filename, bool force);
 
