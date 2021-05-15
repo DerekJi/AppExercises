@@ -10,7 +10,7 @@ namespace AppEx.Tests
         public IServiceProvider ServiceProvider { get; private set; }
         private IConfiguration Configuration { get; set; }
         private readonly string _environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development";
-        private readonly string _settingsBasePath = Environment.CurrentDirectory + "/../../../../AppEx.Csv.Api";
+        private readonly string _settingsBasePath = Environment.CurrentDirectory + "/../../../../AppEx.Api";
 
         /// <summary>
         /// 

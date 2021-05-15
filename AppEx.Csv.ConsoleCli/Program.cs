@@ -61,7 +61,7 @@ namespace AppEx.Csv.ConsoleCli
                 .ConfigureServices((_, services) =>
                 {
                     var _environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development";
-                    var _settingsBasePath = Environment.CurrentDirectory + "/../../../../AppEx.Csv.Api";
+                    var _settingsBasePath = Environment.CurrentDirectory + "/../../../../AppEx.Api";
                     var builder = new ConfigurationBuilder().AddSettings(_settingsBasePath, _environmentName, true);
                     var configuration = builder.Build();
 

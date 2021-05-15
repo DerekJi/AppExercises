@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
-namespace AppEx.Csv.Api.Controllers
+namespace AppEx.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]

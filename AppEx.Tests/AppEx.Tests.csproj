@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <Folder Include="CsvServices\SampleCsv\" />
+    <Folder Include="WeatherServices\" />
   </ItemGroup>
 
   <ItemGroup>
