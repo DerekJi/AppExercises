@@ -19,8 +19,4 @@
     <ProjectReference Include="..\AppEx.Core\AppEx.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Weather\" />
-  </ItemGroup>
-
 </Project>
