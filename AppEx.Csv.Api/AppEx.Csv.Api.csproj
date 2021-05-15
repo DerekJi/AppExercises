@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="transformed-csv\**" />
+    <Content Remove="transformed-csv\**" />
+    <EmbeddedResource Remove="transformed-csv\**" />
+    <None Remove="transformed-csv\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
