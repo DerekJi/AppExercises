@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppEx.Core", "AppEx.Core\Ap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppEx.Tests", "AppEx.Tests\AppEx.Tests.csproj", "{C4B2E34C-4F14-45BF-908D-40BBD9A021D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppEx.Csv.Api", "AppEx.Csv.Api\AppEx.Csv.Api.csproj", "{0C7DDD96-B3E2-4518-AA2D-5C04D4AAABBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppEx.Csv.Api", "AppEx.Csv.Api\AppEx.Csv.Api.csproj", "{0C7DDD96-B3E2-4518-AA2D-5C04D4AAABBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppEx.Csv.ConsoleCli", "AppEx.Csv.ConsoleCli\AppEx.Csv.ConsoleCli.csproj", "{5C6398FA-429A-4138-BBA1-84D0B2836A2C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{0C7DDD96-B3E2-4518-AA2D-5C04D4AAABBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C7DDD96-B3E2-4518-AA2D-5C04D4AAABBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C7DDD96-B3E2-4518-AA2D-5C04D4AAABBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C6398FA-429A-4138-BBA1-84D0B2836A2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C6398FA-429A-4138-BBA1-84D0B2836A2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C6398FA-429A-4138-BBA1-84D0B2836A2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C6398FA-429A-4138-BBA1-84D0B2836A2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
