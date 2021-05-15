@@ -5,9 +5,9 @@ namespace AppEx.Services.CSV.Transform
     public class TransformBuilder
     {
         private dynamic _expando { get; set; }
-        private WaterConnectOptions _options { get; set; }
+        private CsvWaterConnectOptions _options { get; set; }
 
-        public TransformBuilder(WaterConnectOptions options, dynamic expando)
+        public TransformBuilder(CsvWaterConnectOptions options, dynamic expando)
         {
             _expando = expando;
             _options = options;

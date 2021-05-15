@@ -25,7 +25,7 @@ namespace AppEx.Services.CSV
 
         string SaveAs(List<ExpandoObject> records, string filename, bool force);
 
-        ExpandoObject TransformRecord(WaterConnectCsvItem csvItem);
+        ExpandoObject TransformRecord(CsvWaterConnectItem csvItem);
 
         ExpandoObject TransformRecord(dynamic expando);
 

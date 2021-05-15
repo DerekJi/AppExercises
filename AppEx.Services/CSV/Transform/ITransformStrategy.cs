@@ -4,6 +4,6 @@ namespace AppEx.Services.CSV.Transform
 {
     public interface ITransformStrategy
     {
-        dynamic Transform(WaterConnectOptions options, dynamic expando);
+        dynamic Transform(CsvWaterConnectOptions options, dynamic expando);
     }
 }

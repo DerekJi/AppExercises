@@ -22,14 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CsvServices\SampleCsv\" />
     <Folder Include="WeatherServices\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="CsvServices\SampleCsv\file.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>

@@ -41,7 +41,7 @@ namespace AppEx.Api
             });
 
             services.RegisterAllServices(Configuration)
-                .AddScoped<ICsvService, WaterConnectService>();
+                .AddScoped<ICsvService, CsvService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

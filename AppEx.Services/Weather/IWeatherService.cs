@@ -10,7 +10,7 @@ namespace AppEx.Services.Weather
     {
         WeatherObservationsResponse _response { get; set; }
 
-        Task<WeatherObservationsResponse> FetchJsonAsync();
+        Task<WeatherObservationsResponse> FetchJsonAsync(WeatherWmo wmo);
 
         /// <summary>
         /// 
