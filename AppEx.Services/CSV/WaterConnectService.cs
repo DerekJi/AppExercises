@@ -1,9 +1,9 @@
 ﻿using AppEx.Core.Attributes;
 using AppEx.Core.Extensions;
+using AppEx.Services.CSV.Transform;
 using AppEx.Services.Models;
 using CsvHelper;
 using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -11,8 +11,6 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading.Tasks;
 
 namespace AppEx.Services.CSV
@@ -113,7 +111,7 @@ namespace AppEx.Services.CSV
             {
                 return TransformRecords(records);
             }
-           
+
             return records;
         }
 
@@ -180,7 +178,7 @@ namespace AppEx.Services.CSV
                     csv.WriteRecords(transformedRecords);
                     return path;
                 }
-            }            
+            }
         }
 
         /// <summary>
@@ -223,54 +221,14 @@ namespace AppEx.Services.CSV
         {
             if (Options != null)
             {
-                // Remove Columns
-                if (Options.RemoveColumns?.Count > 0)
-                {
-                    Options.RemoveColumns.ForEach(column =>
-                    {
-                        ((IDictionary<string, object>)expando).Remove(column);
-                    });
-                }
-
-                // Add Columns
-                if (Options.NewColumns?.Count > 0)
-                {
-                    Options.NewColumns.ForEach(column =>
-                    {
-                        if (column.CalcRule == ColumnCalcRule.Sum)
-                        {
-                            var sum = SumOfColumns(expando, column.CalcColumns);
-                            ((IDictionary<string, object>)expando).Add(column.ColumnName, sum);
-                        }
-                    });
-                }
+                var builder = new TransformBuilder(Options, expando);
+                return builder
+                    .RemoveColumns()
+                    .NewSumColumns()
+                    .GetInstance();
             }
 
             return expando;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="expando"></param>
-        /// <param name="columns"></param>
-        /// <returns></returns>
-        protected double SumOfColumns(dynamic expando, List<string> columns)
-        {
-            double sum = 0;
-            if (columns?.Count > 0)
-            {
-                columns.ForEach(column =>
-                {
-                    if (((IDictionary<string, object>)expando).ContainsKey(column))
-                    {
-                        var obj = ((IDictionary<string, object>)expando)[column];
-                        double.TryParse(obj.ToString(), out var value);
-                        sum += value;
-                    }
-                });
-            }
-            return sum;
         }
     }
 }
