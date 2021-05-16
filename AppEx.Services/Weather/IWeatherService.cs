@@ -30,8 +30,9 @@ namespace AppEx.Services.Weather
             }
 
             // Calc sum
+            var recordsPerHour = 2;
             var sum = 0.0;
-            var maxSortOrder = hours * 2 - 1;
+            var maxSortOrder = hours * recordsPerHour - 1;
             records.OrderBy(x => x.SortOrder).ToList().ForEach(item =>
             {
                 if (item.SortOrder <= maxSortOrder )
@@ -41,7 +42,7 @@ namespace AppEx.Services.Weather
             });
 
             //
-            var average = sum / hours / 2.0;
+            var average = sum / (maxSortOrder + 1);
 
             return average;
         }
