@@ -14,8 +14,8 @@ namespace AppEx.Csv.ConsoleCli
         static async Task Main(string[] args)
         {
             using IHost host = CreateHostBuilder(args).Build();
-            Console.WriteLine("Welcome to Application Exercise - CSV");
-            Console.WriteLine("Are you sure to load the remote CSV file? (y/N)");
+            Console.WriteLine("\r\nWelcome to Application Exercise - CSV");
+            Console.WriteLine("\r\nAre you sure to load the remote CSV file? (y/N)");
             var yesOrNo = Console.ReadKey();
             if (new List<char>() { 'Y', 'y' }.Contains(yesOrNo.KeyChar))
             {
