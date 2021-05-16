@@ -2,6 +2,7 @@ using AppEx.Core.Extensions;
 using AppEx.Services.CSV;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -46,7 +47,17 @@ namespace AppEx.Api
                     });
             });
 
-            services.AddControllers();
+            services.AddControllers()
+                    .ConfigureApiBehaviorOptions(options =>
+                    {
+                        options.SuppressConsumesConstraintForFormFileParameters = true;
+                        options.SuppressInferBindingSourcesForParameters = true;
+                        options.SuppressModelStateInvalidFilter = true;
+                        options.SuppressMapClientErrors = true;
+                        options.ClientErrorMapping[StatusCodes.Status404NotFound].Link =
+                            "https://httpstatuses.com/404";
+                    });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AppEx.Api", Version = "v1" });

@@ -8,6 +8,7 @@
   <PropertyGroup>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>
+    <UserSecretsId>23b39307-9ebf-4fe5-a7c7-8b338a07db78</UserSecretsId>
   </PropertyGroup>
   
   <ItemGroup>
@@ -24,6 +25,15 @@
   <ItemGroup>
     <ProjectReference Include="..\AppEx.Core\AppEx.Core.csproj" />
     <ProjectReference Include="..\AppEx.Services\AppEx.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.Development.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
