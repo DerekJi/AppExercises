@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppEx.Tests", "AppEx.Tests\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppEx.Api", "AppEx.Api\AppEx.Api.csproj", "{0C7DDD96-B3E2-4518-AA2D-5C04D4AAABBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppEx.Csv.ConsoleCli", "AppEx.Csv.ConsoleCli\AppEx.Csv.ConsoleCli.csproj", "{5C6398FA-429A-4138-BBA1-84D0B2836A2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppEx.Csv.ConsoleCli", "AppEx.Csv.ConsoleCli\AppEx.Csv.ConsoleCli.csproj", "{5C6398FA-429A-4138-BBA1-84D0B2836A2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppEx.Weather.ConsoleCli", "AppEx.Weather.ConsoleCli\AppEx.Weather.ConsoleCli.csproj", "{C9FA5888-CA84-4E71-830E-A9FDCFB24F5E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{5C6398FA-429A-4138-BBA1-84D0B2836A2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C6398FA-429A-4138-BBA1-84D0B2836A2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C6398FA-429A-4138-BBA1-84D0B2836A2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9FA5888-CA84-4E71-830E-A9FDCFB24F5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9FA5888-CA84-4E71-830E-A9FDCFB24F5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9FA5888-CA84-4E71-830E-A9FDCFB24F5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9FA5888-CA84-4E71-830E-A9FDCFB24F5E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

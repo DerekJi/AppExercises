@@ -17,23 +17,22 @@ namespace AppEx.Services.Weather
         /// </summary>
         /// <param name="hours"></param>
         /// <returns></returns>
-        double AverageTemperature(int hours = 72)
+        double AverageTemperature(List<WeatherRecordItem> records, int hours = 72)
         {
             // Validations
             if (hours < 1)
             {
                 throw new ArgumentOutOfRangeException(nameof(hours), "The hours must be greater than 0");
             }
-            var data = _response?.Observations?.Records;
-            if (data?.Count < 1)
+            if (records?.Count < 1)
             {
-                throw new Exception("Cannot found any weather observations");
+                throw new ArgumentOutOfRangeException("Cannot found any weather observations");
             }
 
             // Calc sum
             var sum = 0.0;
             var maxSortOrder = hours * 2 - 1;
-            data.OrderBy(x => x.SortOrder).ToList().ForEach(item =>
+            records.OrderBy(x => x.SortOrder).ToList().ForEach(item =>
             {
                 if (item.SortOrder <= maxSortOrder )
                 {
@@ -42,7 +41,7 @@ namespace AppEx.Services.Weather
             });
 
             //
-            var average = sum / hours;
+            var average = sum / hours / 2.0;
 
             return average;
         }

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace AppEx.Services.Models
 {
@@ -6,5 +7,10 @@ namespace AppEx.Services.Models
     {
         [JsonProperty("observations")]
         public WeatherObservations Observations { get; set; }
+
+        public List<WeatherRecordItem> GetRecords()
+        {
+            return Observations?.Records;
+        }
     }
 }
