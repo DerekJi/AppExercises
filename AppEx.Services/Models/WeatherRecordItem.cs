@@ -1,41 +1,112 @@
-﻿namespace AppEx.Services.Models
+﻿using Newtonsoft.Json;
+
+namespace AppEx.Services.Models
 {
     public class WeatherRecordItem
     {
-        public int? sort_order { get; set; }
-        public WeatherWmo wmo { get; set; }
-        public string name { get; set; }
-        public string history_product { get; set; }
-        public string local_date_time { get; set; }
-        public string local_date_time_full { get; set; }
-        public string aifstime_utc { get; set; }
-        public double? lat { get; set; }
-        public double? lon { get; set; }
-        public double? apparent_t { get; set; }
-        public string cloud { get; set; }
-        public int? cloud_base_m { get; set; }
-        public int? cloud_oktas { get; set; }
-        public int? cloud_type_id { get; set; }
-        public string cloud_type { get; set; }
-        public double? delta_t { get; set; }
-        public int? gust_kmh { get; set; }
-        public int? gust_kt { get; set; }
-        public double? air_temp { get; set; }
-        public double? dewpt { get; set; }
-        public double? press { get; set; }
-        public double? press_qnh { get; set; }
-        public double? press_msl { get; set; }
-        public string press_tend { get; set; }
-        public string rain_trace { get; set; }
-        public int? rel_hum { get; set; }
-        public string sea_state { get; set; }
-        public string swell_dir_worded { get; set; }
-        public int? swell_height { get; set; }
-        public int? swell_period { get; set; }
-        public string vis_km { get; set; }
-        public string weather { get; set; }
-        public string wind_dir { get; set; }
-        public int? wind_spd_kmh { get; set; }
-        public int? wind_spd_kt { get; set; }
+        [JsonProperty("sort_order")]
+        public int? SortOrder { get; set; }
+
+        [JsonProperty("wmo")]
+        public WeatherWmo Wmo { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("history_product")]
+        public string HistoryProduct { get; set; }
+
+        [JsonProperty("local_date_time")]
+        public string LocalDateTime { get; set; }
+
+        [JsonProperty("local_date_time_full")]
+        public string LocalDateTimeFull { get; set; }
+
+        [JsonProperty("aifstime_utc")]
+        public string AifsTimeUtc { get; set; }
+
+        [JsonProperty("lat")]
+        public double? Latitude { get; set; }
+
+        [JsonProperty("lon")]
+        public double? Longtitude { get; set; }
+
+        [JsonProperty("apparent_t")]
+        public double? ApparentT { get; set; }
+
+        [JsonProperty("cloud")]
+        public string Cloud { get; set; }
+
+        [JsonProperty("cloud_base_m")]
+        public int? CloudBaseM { get; set; }
+
+        [JsonProperty("cloud_oktas")]
+        public int? CloudOktas { get; set; }
+
+        [JsonProperty("cloud_type_id")]
+        public int? CloudTypeId { get; set; }
+
+        [JsonProperty("cloud_type")]
+        public string CloudType { get; set; }
+
+        [JsonProperty("delta_t")]
+        public double? DeltaT { get; set; }
+
+        [JsonProperty("gust_kmh")] 
+        public int? GustKmh { get; set; }
+
+        [JsonProperty("gust_kt")]
+        public int? GustKt { get; set; }
+
+        [JsonProperty("air_temp")]
+        public double? AirTemperature { get; set; }
+
+        [JsonProperty("dewpt")]
+        public double? DewpPoint { get; set; }
+
+        [JsonProperty("press")]
+        public double? Press { get; set; }
+
+        [JsonProperty("press_qnh")]
+        public double? PressQnh { get; set; }
+
+        [JsonProperty("press_msl")]
+        public double? RressMsl { get; set; }
+
+        [JsonProperty("press_tend")]
+        public string PressTend { get; set; }
+
+        [JsonProperty("rain_trace")]
+        public string RainTrace { get; set; }
+
+        [JsonProperty("rel_um")]
+        public int? RelHum { get; set; }
+
+        [JsonProperty("sea_state")]
+        public string SeaState { get; set; }
+
+        [JsonProperty("swell_dir_worded")]
+        public string SwellDirWorded { get; set; }
+
+        [JsonProperty("swell_height")]
+        public int? SwellHeight { get; set; }
+
+        [JsonProperty("swell_period")]
+        public int? SwellPeriod { get; set; }
+
+        [JsonProperty("vis_km")]
+        public string VisibilityKm { get; set; }
+
+        [JsonProperty("weather")]
+        public string Weather { get; set; }
+
+        [JsonProperty("wind_dir")]
+        public string WindDir { get; set; }
+
+        [JsonProperty("wind_spd_kmh")]
+        public int? WindSpeedKmh { get; set; }
+
+        [JsonProperty("wind_spd_kt")]
+        public int? WindSpeedKt { get; set; }
     }
 }

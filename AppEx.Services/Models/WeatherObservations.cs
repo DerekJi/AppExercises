@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace AppEx.Services.Models
 {
     public class WeatherObservations
     {
-        public List<WeatherRecordItem> data { get; set; }
+        [JsonProperty("data")]
+        public List<WeatherRecordItem> Records { get; set; }
     }
 }

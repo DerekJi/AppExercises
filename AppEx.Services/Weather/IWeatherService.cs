@@ -24,7 +24,7 @@ namespace AppEx.Services.Weather
             {
                 throw new ArgumentOutOfRangeException(nameof(hours), "The hours must be greater than 0");
             }
-            var data = _response?.observations?.data;
+            var data = _response?.Observations?.Records;
             if (data?.Count < 1)
             {
                 throw new Exception("Cannot found any weather observations");
@@ -33,11 +33,11 @@ namespace AppEx.Services.Weather
             // Calc sum
             var sum = 0.0;
             var maxSortOrder = hours * 2 - 1;
-            data.OrderBy(x => x.sort_order).ToList().ForEach(item =>
+            data.OrderBy(x => x.SortOrder).ToList().ForEach(item =>
             {
-                if (item.sort_order <= maxSortOrder )
+                if (item.SortOrder <= maxSortOrder )
                 {
-                    sum += item.air_temp.HasValue ? item.air_temp.Value : 0.0;
+                    sum += item.AirTemperature.HasValue ? item.AirTemperature.Value : 0.0;
                 }                
             });
 

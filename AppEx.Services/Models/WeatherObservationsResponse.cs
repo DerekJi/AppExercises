@@ -1,7 +1,10 @@
-﻿namespace AppEx.Services.Models
+﻿using Newtonsoft.Json;
+
+namespace AppEx.Services.Models
 {
     public class WeatherObservationsResponse
     {
-        public WeatherObservations observations { get; set; }
+        [JsonProperty("observations")]
+        public WeatherObservations Observations { get; set; }
     }
 }

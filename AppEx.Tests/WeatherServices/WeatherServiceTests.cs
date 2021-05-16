@@ -24,7 +24,7 @@ namespace AppEx.Tests.CsvServices
         public async Task GetJsonAsync_Test()
         {
             var response = await localService.GetJsonAsync(WeatherWmo.AdelaideAirport);
-            Assert.True(response?.observations?.data?.Count > 0);
+            Assert.True(response?.Observations?.Records?.Count > 0);
         }
     }
 }
