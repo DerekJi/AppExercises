@@ -25,7 +25,7 @@ namespace AppEx.Api.Controllers
         [HttpGet("{wmo}")]
         public async Task<ActionResult> GetObservations(WeatherWmo wmo)
         {
-            var result = await _service.FetchJsonAsync(wmo);
+            var result = await _service.GetJsonAsync(wmo);
 
             return Ok(result);
         }

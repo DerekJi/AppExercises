@@ -10,7 +10,7 @@ namespace AppEx.Services.Weather
     {
         WeatherObservationsResponse _response { get; set; }
 
-        Task<WeatherObservationsResponse> FetchJsonAsync(WeatherWmo wmo);
+        Task<WeatherObservationsResponse> GetJsonAsync(WeatherWmo wmo);
 
         /// <summary>
         /// 
@@ -37,7 +37,7 @@ namespace AppEx.Services.Weather
             {
                 if (item.sort_order <= maxSortOrder )
                 {
-                    sum += item.air_temp;
+                    sum += item.air_temp.HasValue ? item.air_temp.Value : 0.0;
                 }                
             });
 

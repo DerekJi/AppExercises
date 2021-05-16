@@ -67,7 +67,7 @@ namespace AppEx.Csv.ConsoleCli
 
                     services
                         .RegisterAllServices(configuration)
-                        .AddScoped<ICsvService, WaterConnectService>();
+                        .AddScoped<ICsvService, CsvService>();
                 });
     }
 }

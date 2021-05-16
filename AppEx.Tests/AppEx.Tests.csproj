@@ -21,8 +21,4 @@
     <ProjectReference Include="..\AppEx.Services\AppEx.Services.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="WeatherServices\" />
-  </ItemGroup>
-
 </Project>
