@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace AppEx.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/v1/[controller]")]
     public class CsvController : ControllerBase
     {
         private readonly ILogger<CsvController> _logger;
@@ -20,6 +20,15 @@ namespace AppEx.Api.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Download CSV file which was loaded from waterconnect.sa.gov.au with transformations of: 1). remove column 'Unit_No', and 2). add new column 'Calc'
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     GET /api/v1/Csv/WaterConnect
+        /// </remarks>
+        /// <returns>CSV file</returns>
         [HttpGet("WaterConnect")]
         public async Task<ActionResult> GetWaterConnectCsv()
         {

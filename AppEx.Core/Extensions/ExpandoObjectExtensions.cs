@@ -49,5 +49,21 @@ namespace AppEx.Core.Extensions
             dynamic expando = JsonConvert.DeserializeObject<ExpandoObject>(json);
             return expando;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="expando"></param>
+        /// <returns></returns>
+        public static ICollection<string> GetKeys(this ExpandoObject expando)
+        {
+            var keys = new List<string>();
+            if (expando != null)
+            {
+                var dict = (IDictionary<string, object>)expando;
+                return dict.Keys;
+            }
+            return keys;
+        }
     }
 }

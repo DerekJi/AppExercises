@@ -1,6 +1,9 @@
-﻿using AppEx.Services.Models;
+﻿using AppEx.Core.Extensions;
+using AppEx.Services.CSV.Transform;
+using AppEx.Services.Models;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,6 +14,48 @@ namespace AppEx.Services.Weather
         WeatherObservationsResponse _response { get; set; }
 
         Task<WeatherObservationsResponse> GetJsonAsync(WeatherWmo wmo);
+
+        /// <summary>
+        /// Filter records by given fields
+        /// </summary>
+        /// <param name="records"></param>
+        /// <param name="fields"></param>
+        /// <returns></returns>
+        IEnumerable<ExpandoObject> FilterBy(List<WeatherRecordItem> records, params string[] fields)
+        {
+            if (records?.Count < 1 || fields?.Length < 1)
+            {
+                return null;
+            }
+
+            var fieldsList = fields.ToList();            
+
+            var expandos = records.Select(item =>
+            {
+                var expando = item.ToExpando();
+                var keys = expando.GetKeys().ToList();
+                var removeColumns = new List<string>();
+                foreach (var key in keys)
+                {
+                    if (!fieldsList.Contains(key))
+                    {
+                        removeColumns.Add(key);
+                    }
+                }
+
+                if (removeColumns.Count > 0)
+                {
+                    var options = new TransformOptions()
+                    {
+                        RemoveColumns = removeColumns
+                    };
+                    new RemoveColumnStrategy().Transform(options, expando);
+                }
+                return expando;
+            });
+
+            return expandos;
+        }
 
         /// <summary>
         /// 

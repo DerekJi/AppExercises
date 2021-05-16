@@ -8,7 +8,7 @@ namespace AppEx.Services.CSV.Transform
     /// </summary>
     public class RemoveColumnStrategy : ITransformStrategy
     {
-        public dynamic Transform(CsvWaterConnectOptions options, dynamic expando)
+        public dynamic Transform(TransformOptions options, dynamic expando)
         {
             if (options?.RemoveColumns?.Count > 0)
             {

@@ -25,29 +25,29 @@ namespace AppEx.Csv.ConsoleCli
 
         static async Task RunCsvConsole(IServiceProvider services)
         {
-            Console.WriteLine("Downloading CSV file ... please wait.");
+            Console.WriteLine("\r\nDownloading CSV file ... please wait.");
             var csv = services.GetRequiredService<ICsvService>();
 
             var content = await csv.FetchRecordsAsync(true);
             if (content?.Count > 0)
             {
-                Console.WriteLine("CSV file has been loaded successfully.");
-                Console.WriteLine("Please type the name of the transformed CSV: ");
+                Console.WriteLine("\r\nCSV file has been loaded successfully.");
+                Console.WriteLine("\r\nPlease type the name of the transformed CSV: ");
                 var filename = Console.ReadLine();
                 if (string.IsNullOrEmpty(filename))
                 {
-                    Console.WriteLine("The filename should not be empty");
+                    Console.WriteLine("\r\nThe filename should not be empty");
                 }
                 else
                 {
-                    Console.WriteLine("Writing file ... please wait.");
+                    Console.WriteLine("\r\nWriting file ... please wait.");
                     var path = csv.SaveAs(content, filename, true);
-                    Console.WriteLine($"File saved: {path}");
+                    Console.WriteLine($"\r\nFile saved: {path}");
                 }
             }
             else
             {
-                Console.WriteLine("Cannot find any data from the source URL");
+                Console.WriteLine("\r\nCannot find any data from the source URL");
             }
         }
 

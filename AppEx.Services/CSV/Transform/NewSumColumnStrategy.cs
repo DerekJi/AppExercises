@@ -11,7 +11,7 @@ namespace AppEx.Services.CSV.Transform
         /// <param name="options"></param>
         /// <param name="expando"></param>
         /// <returns></returns>
-        public dynamic Transform(CsvWaterConnectOptions options, dynamic expando)
+        public dynamic Transform(TransformOptions options, dynamic expando)
         {
             // Add Columns
             if (options?.NewColumns?.Count > 0)

@@ -2,7 +2,7 @@
 
 namespace AppEx.Services.Models
 {
-    public class CsvWaterConnectOptions
+    public class CsvWaterConnectOptions: TransformOptions
     {
         /// <summary>
         /// Specify the key name in appsettings.json
@@ -18,16 +18,6 @@ namespace AppEx.Services.Models
         /// URL of the CSV file
         /// </summary>
         public string CsvUrl { get; set; }
-
-        /// <summary>
-        /// Columns to be removed
-        /// </summary>
-        public List<string> RemoveColumns { get; set; }
-
-        /// <summary>
-        /// Columns to be added
-        /// </summary>
-        public List<CsvWaterConnectColumn> NewColumns { get; set; }
 
         /// <summary>
         /// The directory to accommodate transformed csv files

@@ -1,24 +1,21 @@
+using AppEx.Core.Extensions;
+using AppEx.Services.CSV;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AppEx.Services;
-using AppEx.Core.Extensions;
-using AppEx.Services.CSV;
+using System.IO;
+using System.Reflection;
 
 namespace AppEx.Api
 {
     public class Startup
     {
+        private readonly string _allowedCorsOrigins = "*";
+
         public Startup(IWebHostEnvironment env)
         {
             var _environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development";
@@ -33,11 +30,30 @@ namespace AppEx.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: _allowedCorsOrigins,
+                    builder =>
+                    {
+                        var allowedHosts = Configuration.GetValue<string>("AllowedHosts");
+                        if (!string.IsNullOrEmpty(allowedHosts))
+                        {
+                            builder.WithOrigins(allowedHosts.Split(';'))
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+                        }
+
+                    });
+            });
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AppEx.Api", Version = "v1" });
+
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
             });
 
             services.RegisterAllServices(Configuration)
@@ -57,6 +73,8 @@ namespace AppEx.Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(_allowedCorsOrigins);
 
             app.UseAuthorization();
 
