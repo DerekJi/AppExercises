@@ -45,7 +45,16 @@ namespace AppEx.Core.Extensions
         /// <returns></returns>
         public static ExpandoObject ToExpando<TSource>(this TSource source)
         {
-            var json = JsonConvert.SerializeObject(source);
+            string json;
+            if (typeof(TSource) == typeof(string))
+            {
+                json = source as string;
+            }
+            else
+            {
+                json = JsonConvert.SerializeObject(source);
+            }
+            
             dynamic expando = JsonConvert.DeserializeObject<ExpandoObject>(json);
             return expando;
         }
